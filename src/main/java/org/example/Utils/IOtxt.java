@@ -6,7 +6,7 @@ public class IOtxt {
     public static String readTxt(String txtPath) {
         String str = "";
         String strLine;
-        // 将 txt文件按行读入 str中
+        //txt文件按行读入
         File file = new File(txtPath);
         FileInputStream fileInputStream = null;
         try {
@@ -22,20 +22,19 @@ public class IOtxt {
             bufferedReader.close();
             fileInputStream.close();
         } catch (IOException e) {
-            System.out.println("找不到文件!!!!!");
+            System.out.println("文件路径错误，请重新输入!");
             e.printStackTrace();
         }
         return str;
     }
-
      // 写入txt文件
-    public static void writeTxt(double txtElem,String txtPath){
-        String str = Double.toString(txtElem);
+    public static void writeTxt(String str,String txtPath){
+//        String str = Double.toString(txtElem);
         File file = new File(txtPath);
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(file, true);
-            fileWriter.write(str, 0, (str.length() > 3 ? 4 : str.length()));
+            fileWriter.write(str);
             fileWriter.write("\r\n");
             // 关闭资源
             fileWriter.close();
@@ -43,5 +42,4 @@ public class IOtxt {
             e.printStackTrace();
         }
     }
-
 }

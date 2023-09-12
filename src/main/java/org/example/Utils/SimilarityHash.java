@@ -23,11 +23,10 @@ public class SimilarityHash {
 //        // 文本长度太短时HanLp无法取得关键字
         // 用数组表示特征向量,取128位,从 0 1 2 位开始表示从高位到低位
         int[] v = new int[128];
-        // 1、分词（使用了外部依赖hankcs包提供的接口）
+        // 1、分词
         List<String> keywordList = HanLP.extractKeyword(str, str.length());
-        // hash
         int size = keywordList.size();
-        int i = 0;//以i做外层循环
+        int i = 0;
         for(String keyword : keywordList){
             // 2、获取hash值
             String keywordHash = getHash(keyword);
@@ -62,5 +61,4 @@ public class SimilarityHash {
         }
         return simHash;
     }
-
 }

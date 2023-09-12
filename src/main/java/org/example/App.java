@@ -8,19 +8,18 @@ public class App
 {
     public static void main( String[] args )
     {
-        // 从命令行输入的路径名读取对应的文件，将文件的内容转化为对应的
-        String str0 = IOtxt.readTxt(args[0]);
-        String str1 = IOtxt.readTxt(args[1]);
+        String str0 = IOtxt.readTxt(args[0]);//文件1的路径
+        String str1 = IOtxt.readTxt(args[1]);//文件2
         String resultFileName = args[2];
-        // 由字符串得出对应的 simHash值
+        // simHash值
         String simHash0 = SimilarityHash.getSimHash(str0);
         String simHash1 = SimilarityHash.getSimHash(str1);
-        // 由 simHash值求出相似度
+        // 求相似度
         double similarity = HamMingUtils.getSimilarity(simHash0, simHash1);
-        // 把相似度写入最后的结果文件中
-        IOtxt.writeTxt(similarity, resultFileName);
+        String result="查重率:"+similarity;
+        // 写结果文件
+        IOtxt.writeTxt(result, resultFileName);
         // 退出程序
         System.exit(0);
-
     }
 }

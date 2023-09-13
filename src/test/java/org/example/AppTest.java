@@ -35,8 +35,6 @@ public void Test1(){
     }catch (Exception err){
         System.out.println(err);
     }
-
-
 }
 
     @Test     //原文与原文对比,查重率百分之百
@@ -73,7 +71,7 @@ public void Test1(){
         try {
             String str0 = IOtxt.readTxt(path1);
             String str1 = IOtxt.readTxt(path1);
-            String ansFileName = "E:\\Users\\zengyf\\Desktop\\测试文本\\ans3.txt";
+            String ansFileName = "Z:\\Users\\zengyf\\Desktop\\测试文本\\ans3.txt";
             double ans = HamMingUtils.getSimilarity(SimilarityHash.getSimHash(str0), SimilarityHash.getSimHash(str1));
             String result="查重率："+ans;
             IOtxt.writeTxt(result, ansFileName);
@@ -83,47 +81,48 @@ public void Test1(){
         }
     }
 
-    @Test     //正常读写(文章内容相似)
+    @Test     //正常读写(文章内容为空)
     public void Test5(){
         try {
-            String str0 = IOtxt.readTxt(path1);
-            String str1 = IOtxt.readTxt(path2);
+            String str0 = IOtxt.readTxt("");
+            String str1 = IOtxt.readTxt("");
             String ansFileName = "C:\\Users\\zengyf\\Desktop\\测试文本\\ans4.txt";
             double ans = HamMingUtils.getSimilarity(SimilarityHash.getSimHash(str0), SimilarityHash.getSimHash(str1));
             String result="查重率："+ans;
             IOtxt.writeTxt(result, ansFileName);
         }catch (Exception err){
             err.printStackTrace();
+            System.out.println("文章内容太少");
         }
     }
 
-    @Test     //正常读写(文件内容差距小)
+    @Test     //正常读写(不传入参数)
     public void Test6(){
         try {
             String str0 = IOtxt.readTxt(path5);
             String str1 = IOtxt.readTxt(path6);
-            String ansFileName = "E:\\Users\\zengyf\\Desktop\\测试文本\\ans5.txt";
-            double ans = HamMingUtils.getSimilarity(SimilarityHash.getSimHash(str0), SimilarityHash.getSimHash(str1));
+            String ansFileName = "C:\\Users\\zengyf\\Desktop\\测试文本\\ans5.txt";
+            double ans = HamMingUtils.getSimilarity(SimilarityHash.getSimHash(), SimilarityHash.getSimHash());
             String result="查重率："+ans;
             IOtxt.writeTxt(result, ansFileName);
         }catch (Exception err){
             err.printStackTrace();
-            System.out.println("写入路径错误！");
+            System.out.println("请输入参数！");
         }
     }
 
-    @Test     //正常读写(文件内容差距大)
+    @Test     //正常读写(传入参数类型错误)
     public void Test7(){
         try {
             String str0 = IOtxt.readTxt(path2);
             String str1 = IOtxt.readTxt(path6);
             String ansFileName = "E:\\Users\\zengyf\\Desktop\\测试文本\\ans6.txt";
-            double ans = HamMingUtils.getSimilarity(SimilarityHash.getSimHash(str0), SimilarityHash.getSimHash(str1));
+            double ans = HamMingUtils.getSimilarity(SimilarityHash.getSimHash(1), SimilarityHash.getSimHash(2));
             String result="查重率："+ans;
             IOtxt.writeTxt(result, ansFileName);
         }catch (Exception err){
             err.printStackTrace();
-            System.out.println("写入路径错误！");
+            System.out.println("传入参数类型错误！");
         }
     }
 
